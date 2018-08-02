@@ -1,27 +1,66 @@
 <template>
-  <div id="app">
-    <h1>勇气</h1>
-    <p>三年级时，我还是一个胆小如鼠的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个勇气来回答老师提出的问题。学校举办的活动我也没勇气参加。</p>
-    <p>到了三年级下学期时，我们班上了一节公开课，老师提出了一个很简单的问题，班里很多同学都举手了，甚至成绩比我差很多的，也举手了，还说着："我来，我来。"我环顾了四周，就我没有举手。</p>
-    <img src="http://img.mukewang.com/52b4113500018cf102000200.jpg" alt="fdsffdsfdsfdsdsadas" title="dsdsdsadsadadsad">
-    <a href="wwww.baidu.com" target="_blank">超级链接</a>
+  <div>
+    <v-header :seller="seller"></v-header>
+    <div class="tab border-1px">
+      <div class="tab-item">
+        <router-link to="/goods">商品</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/ratings">评论</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/seller">商家</router-link>
+      </div>
+    </div>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
+  import header from 'components/header/header.vue'
+  import {getSellerData} from 'api/seller'
+  import {ERR_OK} from 'api/config'
   export default {
-    name: 'App'
+    data() {
+      return {
+        recommends: []
+      }
+    },
+    created() {
+      this._getSellerData()
+    },
+    methods: {
+      _getSellerData() {
+        getSellerData().then((res) => {
+          if (res.code === ERR_OK) {
+            this.recommends = res.data.slider
+          }
+        })
+      }
+    },
+    components: {
+      'v-header': header
+    }
   }
 </script>
 
-<style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+<style lang="stylus" rel="stylesheet/stylus">
+  @import "./common/stylus/mixin.styl"
+  .tab
+    display: flex
+    width: 100%
+    height: 40px
+    line-height: 40px
+    border-1px(rgba(7, 17, 27, 0.1))
+    .tab-item
+      flex: 1
+      text-align: center
+      & > a
+        display: block
+        font-size: 14px
+        color: rgb(77, 85, 93)
+        &.active
+          color: rgb(240, 20, 20)
 </style>
-
