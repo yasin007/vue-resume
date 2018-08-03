@@ -22,6 +22,7 @@
   import header from 'components/header/header.vue'
   import {getSellerData} from 'api/seller'
   import {ERR_OK} from 'api/config'
+
   export default {
     data() {
       return {
