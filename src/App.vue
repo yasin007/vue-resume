@@ -20,27 +20,8 @@
 
 <script>
   import header from 'components/header/header.vue'
-  import {getSellerData} from 'api/seller'
-  import {ERR_OK} from 'api/config'
 
   export default {
-    data() {
-      return {
-        recommends: []
-      }
-    },
-    created() {
-      this._getSellerData()
-    },
-    methods: {
-      _getSellerData() {
-        getSellerData().then((res) => {
-          if (res.code === ERR_OK) {
-            this.recommends = res.data.slider
-          }
-        })
-      }
-    },
     components: {
       'v-header': header
     }

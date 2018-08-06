@@ -1,10 +1,16 @@
 /*基础样式*/
 @import "variable.styl"
-
 body, html
-  font-family: Roboto, Lato, sans-serif;
-  line-height: 1;
-  font-size: 14px;
-  font-weight: 200;
-  font-family "PingFang SC","STHeitiSC-Light","Helvetica-Light","Arial","sans-serif"
-  width 100%
+  line-height: 1
+  font-weight: 200
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif
+
+.clearfix
+  display: inline-block
+  &:after
+    display: block
+    content: "."
+    height: 0
+    line-height: 0
+    clear: both
+    visibility: hidden
