@@ -1,246 +1,38 @@
 <template>
   <div class="header">
-    <div class="content-wrapper">
-      <div class="avrtar">
-        <img width="64" height="64" src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg">
+    <div class="content-wrap">
+      <div class="avatar-zone">
+        <img src="" width="64px" height="64px">
       </div>
-      <div class="content">
+      <div class="info-zone">
         <div class="title">
-          <span class="brand"></span>
-          <span class="name">nihao</span>
+          <span class="brand-type"></span>
+          <span class="goods-title"></span>
         </div>
-        <div class="description">
-          你好/3分钟分钟送达
+        <div class="time-delivery">蜂鸟专送/38分钟后送达</div>
+        <div class="preferential-tipWrap">
+          <span class="preferential-image"></span>
+          <span class="preferential-tip">在线支付满减28</span>
         </div>
-        <div class="support">
-          <span class="icon"></span>
-          <span class="text">在线支付满减48减5</span>
-        </div>
-      </div>
-      <div class="support-count" @click="showDetail">
-        <span class="count">5个</span>
       </div>
     </div>
-    <div class="bulletin-wrapper" @click="showDetail">
-      <div class="bulletin-title"></div>
-      <div class="bulletin-text">fhdsfhdskhfkdjshfjkdhsfjkhdsjkfhdsjvxjijdklasdakjflkdslkfjldskjaflfafdsafafdsfdsfsfsd
-      </div>
-    </div>
-    <div v-show="detialShow" class="detail">
-      <div class="detail-wrapper clearfix">
-        <div class="detail-main">
-          <h1 class="name">标题</h1>
-          <div class="star-wrapper">
-            <star :size="48" :score="4"></star>
-          </div>
-          <div class="title">
-            <div class="line"></div>
-            <div class="text">优惠信息</div>
-            <div class="line"></div>
-          </div>
-          <ul class="supports">
-            <li class="support-item">
-              <span class="icon" :class="classMap"></span>
-              <span class="text">你好</span>
-            </li>
-          </ul>
-          <div class="title">
-            <div class="line"></div>
-            <div class="text">商家公告</div>
-            <div class="line"></div>
-          </div>
-          <div class="bulletin">
-            <p class="content">fdskfjkds规范的结果看到房间观看了发动机盖叫对方立刻给甲方的考虑结果反馈单链接观看领导机构开发的价格肯定发了几个地方看了金刚骷髅岛发几个就</p>
-          </div>
-        </div>
-      </div>
-      <div class="detail-close" @click="hideDetail">
-        <i class="icon-close"></i>
-      </div>
+    <div class="announcement-warp">
+      <span class="announcement-icon"></span>
+      <span class="announcement-tip">粥品香坊其烹饪粥料的秘方源于中国千年古法，再融合现代制作工业</span>
     </div>
   </div>
 </template>
 
 <script>
-  import star from 'components/star/star'
-
-  export default {
-    data() {
-      return {
-        detialShow: false
-      }
-    },
-    methods: {
-      showDetail() {
-        this.detialShow = true
-      },
-      hideDetail() {
-        this.detialShow = false
-      }
-    },
-    components: {
-      star
-    }
-  }
+  export default {}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "../../common/stylus/mixin.styl"
   .header
-    position: relative
-    overflow: hidden
-    color: #fff
     background: rgba(7, 17, 27, 0.5)
-    .content-wrapper
-      position relative
-      padding 24px 12px 18px 24px
-      font-size 0
-      .avrtar
-        display: inline-block
-        vertical-align: top
-        img
-          border-radius: 2px
-      .content
-        display: inline-block
-        margin-left: 16px
-        .title
-          margin-top 2px
-          margin-bottom 8px
-          .brand
-            vertical-align top
-            display inline-block
-            width 36px
-            height 18px
-            bg-image('brand')
-            background-size 30px, 18px
-            background-repeat no-repeat
-          .name
-            margin-left: 6px
-            font-size: 16px
-            line-height: 18px
-            font-weight: bold
-        .description
-          margin-bottom 12px
-          font-size 12px
-          line-height 12px
-        .support
-          .icon
-            vertical-align top
-            display inline-block
-            width 12px
-            height 12px
-            margin-right 4px
-            background-size 12px, 12px
-            background-repeat no-repeat
-            bg-image('decrease_1')
-          .text
-            font-size 12px
-            line-height 12px
-      .support-count
-        position absolute
-        right 12px
-        bottom 18px
-        padding 0 8px
-        height 24px
-        line-height 24px
-        border-radius 14px
-        background rgba(0, 0, 0, 0.2)
-        .count
-          font-size 10px
-    .bulletin-wrapper
-      position: relative
-      height: 28px
-      line-height: 28px
-      padding: 0 22px 0 12px
-      white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
-      background: rgba(7, 17, 27, 0.2)
-      .bulletin-title
-        display inline-block
-        vertical-align top
-        margin-top 7px
-        width 22px
-        height 12px
-        bg-image('bulletin')
-        background-size 22px, 12px
-        background-repeat no-repeat
-      .bulletin-text
-        display inline-block
-        vertical-align top
-        font-size 10px
-        margin-left 4px
-        margin-right 4px
-    .detail
-      position: fixed
-      z-index: 100
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      overflow: auto
-      backdrop-filter: blur(10px)
-      opacity: 1
-      background rgba(7, 17, 27, 0.8)
-      .detail-wrapper
-        width: 100%
-        min-height 100%
-        .detail-main
-          margin-top 64px
-          padding-bottom 64px
-          .name
-            line-height 16px
-            text-align center
-            font-size 16px
-            font-weight 700px
-          .star-wrapper
-            margin-top: 18px
-            padding: 2px 0
-            text-align: center
-          .title
-            display flex
-            width 80%
-            margin 30px auto 24px auto
-            .line
-              flex: 1
-              position relative
-              top -6px
-              border-bottom 1px solid rgba(255, 255, 255, 0.2)
-            .text
-              padding 0 12px
-              font-size 14px
-          .supports
-            width 80%
-            margin 0 auto
-            .support-item
-              padding 0 12px
-              margin-bottom 12px
-              font-size 0px
-              &:last-child
-                margin-bottom 0px
-              .icon
-                display inline-block
-                width 16px
-                height: 16px
-                vertical-align top
-                margin-right 16px
-                background-size 16px 16px
-                background-repeat no-repeat
-              .text
-                line-height 12px
-                font-size 12px
-          .bulletin
-            width: 80%
-            margin: 0 auto
-            .content
-              padding: 0 12px
-              line-height: 24px
-              font-size: 12px
-      .detail-close
-        position: relative
-        width: 32px
-        height: 32px
-        margin: -64px auto 0 auto
-        clear: both
-        font-size: 32px
+
+    .content-wrap
+      padding: 24px 7px 18px 24px
+      display: flex
+      blur: 10px
 </style>

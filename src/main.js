@@ -4,9 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import 'common/stylus/index.styl'
-// import fastclick from 'fastclick'// 解决300毫秒延时
+import fastclick from 'fastclick'// 解决300毫秒延时
 import 'babel-polyfill' // es6补丁
-// fastclick.attach(document.body)
+fastclick.attach(document.body)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
