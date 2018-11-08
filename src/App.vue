@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header>我是header</v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab">
       <div class="tab-item">
         <router-link to="/goods" tag="a">商品</router-link>
@@ -33,7 +33,6 @@
       getIndexData() {
         var that = this
         axios.get('/api/seller').then(function (response) {
-          console.log(response)
           that.seller = response.data.data
         })
       }
