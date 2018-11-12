@@ -40,22 +40,24 @@
             <div class="line"></div>
             <div class="text">优惠信息</div>
             <div class="line"></div>
-            <ul v-if="seller.supports" class="supports">
-              <li class="support-item" v-for="item in seller.supports" :key="item.index">
-                <span class="icon" :class="classMap[seller.supports[0].type]"></span>
-                <span class="text">{{seller.supports[0].description}}</span>
-              </li>
-            </ul>
           </div>
-          <div class="detial-announcement-warpper">
-            <span></span>
-            <div>优惠信息</div>
-            <span></span>
-            <p></p>
+          <ul v-if="seller.supports" class="supports">
+            <li class="support-item" v-for="item in seller.supports" :key="item.index">
+              <span class="icon" :class="classMap[seller.supports[0].type]"></span>
+              <span class="text">{{seller.supports[0].description}}</span>
+            </li>
+          </ul>
+          <div class="detail-discount-wrapper">
+            <div class="line"></div>
+            <div class="text">商家公告</div>
+            <div class="line"></div>
+          </div>
+          <div class="bulletin">
+            <p class="content">{{seller.bulletin}}</p>
           </div>
         </div>
       </div>
-      <div class="detail-close">
+      <div class="detail-close" @click="hideDetail">
         <i class="icon-close"></i>
       </div>
     </div>
@@ -214,6 +216,8 @@
       width: 100%
       height: 100%
       overflow: auto
+      transition: all 0.5s
+      backdrop-filter: blur(10px)
       background: rgba(7, 17, 27, 0.8)
       .detail-wrapper
         width: 100%
@@ -230,38 +234,60 @@
             margin-top: 16px
             padding: 2px auto
             text-align: center
-        .detail-close
-          position: relative
-          width: 32px
-          height: 32px
-          margin: -64px auto 0 auto
-          clear: both
-          font-size: 32px
-      .detail-discount-wrapper
-        display: flex
-        margin: 30px 36px 24px 36px
-        align-items: center
-        .line
-          flex: 1
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2)
-        .text
-          margin 0 12px
-          font-size: 14px
-          line-height: 14px
-          font-weight: 700
-      .supports
-        margin: 24px 36px 28px 36px
-        .support-item
+          .detail-discount-wrapper
+            display: flex
+            margin: 30px 36px 24px 36px
+            align-items: center
+            .line
+              flex: 1
+              border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+            .text
+              margin 0 12px
+              font-size: 14px
+              line-height: 14px
+              font-weight: 700
+          .supports
+            width: 80%
+            margin: 0 auto
+          .support-item
+            padding: 0 12px
+            margin-bottom: 12px
+            font-size: 0
+            &:last-child
+              margin-bottom: 0
+            .icon
+              display: inline-block
+              width: 16px
+              height: 16px
+              vertical-align: top
+              margin-right: 6px
+              background-size: 16px 16px
+              background-repeat: no-repeat
+              &.decrease
+                bg-image('decrease_2')
+              &.discount
+                bg-image('discount_2')
+              &.guarantee
+                bg-image('guarantee_2')
+              &.invoice
+                bg-image('invoice_2')
+              &.special
+                bg-image('special_2')
+            .text
+              line-height: 16px
+              font-size: 12px
+      .bulletin
+        width: 80%
+        margin: 0 auto
+        .content
           padding: 0 12px
-          margin-bottom: 12px
-          font-size: 0
-          &:last-child
-            margin-bottom: 0
-          .icon
-            display: inline-block
-            width: 16px
-            height: 16px
-            margin-right: 6px
-            background-size: 16px 16px
-            vertical-align: top
+          line-height: 24px
+          font-size: 12px
+      .detail-close
+        position: relative
+        width: 32px
+        height: 32px
+        margin: -64px auto 0 auto
+        clear: both
+        font-size: 32px
 </style>
