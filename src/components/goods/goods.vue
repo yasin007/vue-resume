@@ -29,6 +29,9 @@
                   <span class="now">￥{{food.price}}</span><span class="old"
                                                                 v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-warpper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
@@ -43,6 +46,7 @@
   import axios from 'axios'
   import BScroll from 'better-scroll'
   import shopcart from 'components/shopcart/shopcart'
+  import cartcontrol from 'components/cartcontrol/cartcontrol'
 
   export default {
     props: {
@@ -112,7 +116,8 @@
       }
     },
     components: {
-      shopcart
+      shopcart,
+      cartcontrol
     }
   }
 </script>
