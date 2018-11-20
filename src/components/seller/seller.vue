@@ -1,5 +1,5 @@
 <template>
-  <div class="goods">
+  <div class="seller">
     i am seller
   </div>
 </template>

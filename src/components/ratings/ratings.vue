@@ -1,5 +1,5 @@
 <template>
-  <div class="goods">
+  <div class="ratings">
     i am ratings
   </div>
 </template>
