@@ -35,12 +35,14 @@
         </li>
       </ul>
     </div>
+    <shopcart></shopcart>
   </div>
 </template>
 <script>
 
   import axios from 'axios'
   import BScroll from 'better-scroll'
+  import shopcart from 'components/shopcart/shopcart'
 
   export default {
     props: {
@@ -108,6 +110,9 @@
           this.listHeight.push(height)
         }
       }
+    },
+    components: {
+      shopcart
     }
   }
 </script>
